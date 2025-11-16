@@ -153,13 +153,20 @@ setInterval(()=>{
 function createHeart(){const h=document.createElement('div');h.className='heart';h.textContent='💖';h.style.left=Math.random()*100+'vw';h.style.fontSize=(Math.random()*20+15)+'px';document.body.appendChild(h);setTimeout(()=>h.remove(),5000);}setInterval(createHeart,300);
 
 // NÚT KHÔNG — NHẢY LINH HOẠT CHO MÁY TÍNH VÀ MOBILE
-const no=document.getElementById('noBtn');
-function moveNo(){
-  const x=Math.random()*(window.innerWidth-100);
-  const y=Math.random()*(window.innerHeight-50);
-  no.style.left=x+'px';
-  no.style.top=y+'px';
+function moveNo() {
+    const btnWidth = no.offsetWidth;
+    const btnHeight = no.offsetHeight;
+
+    const maxX = window.innerWidth - btnWidth - 20; 
+    const maxY = window.innerHeight - btnHeight - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    no.style.left = x + 'px';
+    no.style.top = y + 'px';
 }
+
 no.addEventListener('mouseover', moveNo);
 no.addEventListener('touchstart', moveNo);
 
